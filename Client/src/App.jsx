@@ -12,6 +12,8 @@ import './css/style.css';
 // Import Pages
 import Dashboard from './pages/Dashboard';
 import ABTesting from './pages/ABTesting';
+import HeatMaps from './pages/HeatMaps';
+import About from './pages/About';
 
 function App() {
 
@@ -27,7 +29,9 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/heatmaps" element={<HeatMaps />} />
         <Route exact path="/abtesting" element={<ABTesting />} />
+        <Route exact path="/about" element={<About />} />
       </Routes>
     </>
   );
