@@ -10,6 +10,8 @@ module.exports = {
     extend: {
       colors: {
         primary_pink: '#FF3CD4',
+        primary_blue: '#3377EE',
+        secondary_green: '#10BEB4',
         light_background: '#F1F5F9'
       },
       boxShadow: {
