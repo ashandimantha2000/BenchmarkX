@@ -3,6 +3,14 @@ import { NavLink, useLocation } from "react-router-dom";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
+//Import Icons
+import { IoHome } from "react-icons/io5";
+import { FaFire } from "react-icons/fa6";
+import { SiVitest } from "react-icons/si";
+import { CgProfile } from "react-icons/cg";
+import { MdMore } from "react-icons/md";
+
+
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
   const { pathname } = location;
@@ -111,26 +119,30 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             <ul className="mt-3">
               {/* Dashboard */}
               <SidebarLinkGroup
-                activecondition={pathname.includes("Dashboard")}
+                activecondition={
+                  pathname === "/" || pathname.includes("dashboard")
+                }
               >
-                {() => {
+                {(handleClick, open) => {
                   return (
                     <React.Fragment>
                       <a
                         href="/"
-                        className={`block text-slate-900 truncate transition duration-150 ${
-                          pathname.includes("Dashboard")
+                        className={`block text-slate-90 font-extrabold truncate transition duration-150 ${
+                          pathname === "/" || pathname.includes("dashboard")
                             ? "hover:text-primary_blue"
                             : "hover:text-primary_blue"
                         }`}
+                        // onClick={(e) => {
+                        //   e.preventDefault();
+                        //   sidebarExpanded
+                        //     ? handleClick()
+                        //     : setSidebarExpanded(true);
+                        // }}
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                            <img
-                              src="https://static.vecteezy.com/system/resources/thumbnails/022/979/474/small/cartoon-fire-effect-a-yellow-bonfire-burns-to-heat-png.png"
-                              alt=""
-                              width={30}
-                            />
+                          <IoHome />
                             <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Dashboard
                             </span>
@@ -141,8 +153,35 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   );
                 }}
               </SidebarLinkGroup>
-              
               {/* HeatMaps */}
+              <SidebarLinkGroup
+                activecondition={pathname.includes("HeatMaps")}
+              >
+                {() => {
+                  return (
+                    <React.Fragment>
+                      <a
+                        href="/HeatMaps"
+                        className={`block text-slate-900 truncate transition duration-150 ${
+                          pathname.includes("HeatMaps")
+                            ? "hover:text-primary_blue"
+                            : "hover:text-primary_blue"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                          <FaFire />
+                            <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              HeatMaps
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </React.Fragment>
+                  );
+                }}
+              </SidebarLinkGroup>
+              {/* AB Testing */}
               <SidebarLinkGroup
                 activecondition={pathname.includes("ABTesting")}
               >
@@ -159,13 +198,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                            <img
-                              src="https://static.vecteezy.com/system/resources/thumbnails/022/979/474/small/cartoon-fire-effect-a-yellow-bonfire-burns-to-heat-png.png"
-                              alt=""
-                              width={30}
-                            />
+                          <SiVitest />
                             <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                              HeatMaps
+                            A/B Testing
                             </span>
                           </div>
                         </div>
@@ -190,6 +225,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </span>
             </h3>
             <ul className="mt-3">
+              
               {/* Authentication */}
               <SidebarLinkGroup>
                 {(handleClick, open) => {
@@ -209,19 +245,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                            <svg
-                              className="shrink-0 h-6 w-6"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                className="fill-current text-slate-600"
-                                d="M8.07 16H10V8H8.07a8 8 0 110 8z"
-                              />
-                              <path
-                                className="fill-current text-slate-400"
-                                d="M15 12L8 6v5H0v2h8v5z"
-                              />
-                            </svg>
+                          <MdMore />
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Authentication
                             </span>
@@ -280,6 +304,35 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   );
                 }}
               </SidebarLinkGroup>
+              {/* About */}
+            <SidebarLinkGroup
+                activecondition={pathname.includes("About")}
+              >
+                {() => {
+                  return (
+                    <React.Fragment>
+                      <a
+                        href="/about"
+                        className={`block text-slate-900 truncate transition duration-150 ${
+                          pathname.includes("About")
+                            ? "hover:text-primary_blue"
+                            : "hover:text-primary_blue"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                          <CgProfile />
+                            <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            About
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </React.Fragment>
+                  );
+                }}
+              </SidebarLinkGroup>
+              
             </ul>
           </div>
         </div>
