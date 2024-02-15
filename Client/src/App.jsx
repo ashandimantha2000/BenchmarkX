@@ -11,6 +11,7 @@ import './css/style.css';
 
 // Import Pages
 import Dashboard from './pages/Dashboard';
+import ABTesting from './pages/ABTesting';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/abtesting" element={<ABTesting />} />
       </Routes>
     </>
   );
