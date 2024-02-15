@@ -111,35 +111,27 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             <ul className="mt-3">
               {/* Dashboard */}
               <SidebarLinkGroup
-                activecondition={
-                  pathname === "/" || pathname.includes("dashboard")
-                }
+                activecondition={pathname.includes("Dashboard")}
               >
-                {(handleClick, open) => {
+                {() => {
                   return (
                     <React.Fragment>
                       <a
-                        href="#0"
-                        className={`block text-slate-200 truncate transition duration-150 ${
-                          pathname === "/" || pathname.includes("dashboard")
-                            ? "hover:text-primary_pink"
-                            : "hover:text-primary_pink"
+                        href="/"
+                        className={`block text-slate-900 truncate transition duration-150 ${
+                          pathname.includes("Dashboard")
+                            ? "hover:text-primary_blue"
+                            : "hover:text-primary_blue"
                         }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          sidebarExpanded
-                            ? handleClick()
-                            : setSidebarExpanded(true);
-                        }}
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
                             <img
-                              src="https://www.freeiconspng.com/uploads/white-strategy-icon-33.png"
-                              alt="ss"
+                              src="https://static.vecteezy.com/system/resources/thumbnails/022/979/474/small/cartoon-fire-effect-a-yellow-bonfire-burns-to-heat-png.png"
+                              alt=""
                               width={30}
                             />
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Dashboard
                             </span>
                           </div>
@@ -149,17 +141,18 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   );
                 }}
               </SidebarLinkGroup>
+              
               {/* HeatMaps */}
               <SidebarLinkGroup
-                activecondition={pathname.includes("ecommerce")}
+                activecondition={pathname.includes("ABTesting")}
               >
                 {() => {
                   return (
                     <React.Fragment>
                       <a
-                        href="https://facebook.com/"
+                        href="/ABTesting"
                         className={`block text-slate-900 truncate transition duration-150 ${
-                          pathname.includes("ecommerce")
+                          pathname.includes("ABTesting")
                             ? "hover:text-primary_blue"
                             : "hover:text-primary_blue"
                         }`}
