@@ -4,6 +4,9 @@ import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
 import WelcomeBanner from "../components/dashboard/WelcomeBanner";
 import UpdateCard from "../components/dashboard/UpdateCard";
+import HeatMaps from "../components/dashboard/HeatMaps";
+import ABTesting from "../components/dashboard/ABTesting";
+
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -24,6 +27,10 @@ function Dashboard() {
             <WelcomeBanner />
             <h1>Kodukara Impressions</h1>
             <UpdateCard />
+            <div className="flex justify-between w-full">
+            <HeatMaps />
+            <ABTesting />
+            </div>
           </div>
         </main>
       </div>
