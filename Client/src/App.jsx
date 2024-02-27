@@ -27,6 +27,7 @@ function App() {
 
   return (
     <>
+    {/* Use Outlets */}
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/heatmaps" element={<HeatMaps />} />

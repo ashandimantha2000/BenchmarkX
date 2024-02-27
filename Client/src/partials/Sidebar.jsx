@@ -10,7 +10,6 @@ import { SiVitest } from "react-icons/si";
 import { CgProfile } from "react-icons/cg";
 import { MdMore } from "react-icons/md";
 
-
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
   const { pathname } = location;
@@ -96,8 +95,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
-          <NavLink end to="/" className="block" >
-            <img src="../src/assets/images/Logo-Text.png" alt="logo" width={150}/>
+          <NavLink end to="/" className="block">
+            <img
+              src="../src/assets/images/Logo-Text.png"
+              alt="logo"
+              width={150}
+            />
           </NavLink>
         </div>
 
@@ -142,7 +145,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                          <IoHome />
+                            <IoHome />
                             <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Dashboard
                             </span>
@@ -154,9 +157,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 }}
               </SidebarLinkGroup>
               {/* HeatMaps */}
-              <SidebarLinkGroup
-                activecondition={pathname.includes("HeatMaps")}
-              >
+              <SidebarLinkGroup activecondition={pathname.includes("HeatMaps")}>
                 {() => {
                   return (
                     <React.Fragment>
@@ -170,7 +171,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                          <FaFire />
+                            <FaFire />
                             <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               HeatMaps
                             </span>
@@ -198,9 +199,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                          <SiVitest />
+                            <SiVitest />
                             <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                            A/B Testing
+                              A/B Testing
                             </span>
                           </div>
                         </div>
@@ -225,7 +226,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </span>
             </h3>
             <ul className="mt-3">
-              
               {/* Authentication */}
               <SidebarLinkGroup>
                 {(handleClick, open) => {
@@ -234,7 +234,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       <a
                         href="#0"
                         className={`block text-slate-900 truncate transition duration-150 ${
-                          open ? "hover:text-primary_blue" : "hover:text-primary_blue"
+                          open
+                            ? "hover:text-primary_blue"
+                            : "hover:text-primary_blue"
                         }`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -245,7 +247,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                          <MdMore />
+                            <MdMore />
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Authentication
                             </span>
@@ -305,9 +307,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 }}
               </SidebarLinkGroup>
               {/* About */}
-            <SidebarLinkGroup
-                activecondition={pathname.includes("About")}
-              >
+              <SidebarLinkGroup activecondition={pathname.includes("About")}>
                 {() => {
                   return (
                     <React.Fragment>
@@ -321,9 +321,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                          <CgProfile />
+                            <CgProfile />
                             <span className="text-sm font-semibold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                            About
+                              About
                             </span>
                           </div>
                         </div>
@@ -332,7 +332,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   );
                 }}
               </SidebarLinkGroup>
-              
             </ul>
           </div>
         </div>
