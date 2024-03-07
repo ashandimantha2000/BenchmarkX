@@ -3,8 +3,8 @@ import React, { useState } from "react";
 // Import Components
 import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
-import VarientA from "../components/ABTesting/VarientA";
-import VarientB from "../components/ABTesting/VarientB";
+import VarientA from "../TestApp/ABTesting/VarientA";
+import VarientB from "../TestApp/ABTesting/VarientB";
 
 function ABTesting() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
