@@ -3,6 +3,8 @@ import React, { useState } from "react";
 // Import Components
 import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
+import VarientA from "../components/ABTesting/VarientA";
+import VarientB from "../components/ABTesting/VarientB";
 
 function ABTesting() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -17,8 +19,21 @@ function ABTesting() {
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
-          <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            <h1>A/B Testing</h1>
+          <div className="px-4 sm:px-6 lg:px-8 py-6 w-full max-w-9xl mx-auto flex-1">
+            <h1 className="sub-heading">A/B Testing</h1>
+            <hr></hr>
+          </div>
+          <div>
+            <div className="px-4 sm:px-6 lg:px-8 py-6 w-full max-w-9xl mx-auto">
+              <div className="flex justify-between w-full">
+                <div className="flex-1">
+                  <VarientA />
+                </div>
+                <div className="flex-1">
+                  <VarientB />
+                </div>
+              </div>
+            </div>
           </div>
         </main>
       </div>
