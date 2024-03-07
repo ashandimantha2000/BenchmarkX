@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import VarientA from "../components/ABTesting/VarientA";
-import VarientB from "../components/ABTesting/VarientB";
+import VarientA from "../TestApp/ABTesting/VarientA";
+import VarientB from "../TestApp/ABTesting/VarientB";
 
 
 const ABTestingComponent = () => {
