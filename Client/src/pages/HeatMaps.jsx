@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TestApp from "../TestApp/MyApp";
 
 // Import Components
 import Sidebar from "../partials/Sidebar";
@@ -17,9 +18,16 @@ function HeatMaps() {
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
-          <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            <h1>HeatMaps</h1>
+          <div className="px-4 sm:px-6 lg:px-8 py-6 w-full max-w-9xl mx-auto flex-1">
+            <h1 className="sub-heading">Heat Maps</h1>
+            <hr></hr>
           </div>
+          <div className="flex pb-3">
+          <h3 className="px-3 font-semibold">Application Name:</h3>
+          <h3>Nortion</h3>
+          </div>
+          {/* TestApp Imported Here */}
+          <TestApp/>
         </main>
       </div>
     </div>
