@@ -3,7 +3,7 @@ import VarientA from "../TestApp/ABTesting/VarientA";
 import VarientB from "../TestApp/ABTesting/VarientB";
 
 
-const ABTestingComponent = () => {
+const UserApp = () => {
   const [variant, setVariant] = useState("");
 
   // Function to choose a variant randomly
@@ -56,4 +56,4 @@ const ABTestingComponent = () => {
   );
 };
 
-export default ABTestingComponent;
+export default UserApp;

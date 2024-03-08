@@ -14,7 +14,7 @@ import Dashboard from './pages/Dashboard';
 import ABTesting from './pages/ABTesting';
 import HeatMaps from './pages/HeatMaps';
 import About from './pages/About';
-import TestApp from './pages/TestApp';
+import UserApp from './pages/UserApp';
 
 function App() {
 
@@ -34,7 +34,7 @@ function App() {
         <Route exact path="/heatmaps" element={<HeatMaps />} />
         <Route exact path="/abtesting" element={<ABTesting />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact path="/test" element={<TestApp />} />
+        <Route exact path="/test" element={<UserApp />} />
       </Routes>
     </>
   );

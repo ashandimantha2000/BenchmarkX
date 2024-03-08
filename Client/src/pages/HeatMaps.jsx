@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import TestApp from "../TestApp/MyApp";
+import HeatmapGenerator from "../components/HeatMap/HeatmapGenerator";
+
 
 // Import Components
 import Sidebar from "../partials/Sidebar";
@@ -10,7 +12,7 @@ function HeatMaps() {
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
       {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      {/* <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
 
       {/* Content area */}
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
@@ -27,6 +29,7 @@ function HeatMaps() {
           <h3>Nortion</h3>
           </div>
           {/* TestApp Imported Here */}
+          <HeatmapGenerator/>
           <TestApp/>
         </main>
       </div>
