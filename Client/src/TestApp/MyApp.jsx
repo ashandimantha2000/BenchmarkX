@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import VarientA from "../TestApp/ABTesting/VarientA";
 import VarientB from "../TestApp/ABTesting/VarientB";
-
 
 const UserApp = () => {
   const [variant, setVariant] = useState("");
@@ -20,6 +19,34 @@ const UserApp = () => {
   useEffect(() => {
     chooseVariant();
   }, []);
+
+
+  //Tracking the session time
+  const startTimeRef = useRef(new Date().getTime());
+
+  useEffect(() => {
+    const handleUnload = () => {
+      const endTime = new Date().getTime();
+      const sessionTime = (endTime - startTimeRef.current) / 1000; // Convert to seconds
+      console.log(`Visiting session time: ${sessionTime} seconds`);
+      
+      //Check Bounce Rate
+      if(sessionTime<5){
+        console.log("Bounce Rate is High")
+      }
+      else{
+        console.log("Bounce Rate is Low")
+      }
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, []);
+
+  
 
   return (
     <div>
