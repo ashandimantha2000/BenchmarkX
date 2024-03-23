@@ -9,7 +9,7 @@ function UpdateCard() {
           data.updateScores &&
           data.updateScores.map((pdata) => (
             <div key={pdata.id}>
-              <div className="bg-slate-100 w-56 h-24 rounded-lg drop-shadow-xl shadow-slate-300">
+              <div className="bg-slate-100 w-56 h-24 rounded-lg drop-shadow-xl shadow-slate-300 hover:scale-105 transition ease-in">
                 <div className="flex justify-evenly pt-6">
                   <img
                     src={pdata.image}

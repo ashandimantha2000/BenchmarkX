@@ -11,7 +11,7 @@ function HeatMaps() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
-      {/* Sidebar */}
+      <Sidebar />
       {/* <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
 
       {/* Content area */}
