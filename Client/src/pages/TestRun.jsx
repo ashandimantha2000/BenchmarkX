@@ -1,28 +1,68 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
-const TrackSessionTime = () => {
-  const startTimeRef = useRef(new Date().getTime());
+const UserSessionRecorder = () => {
+  const [mediaStream, setMediaStream] = useState(null);
+  const [recording, setRecording] = useState(false);
+  const [videoBlob, setVideoBlob] = useState(null);
 
-  useEffect(() => {
-    const handleUnload = () => {
-      const endTime = new Date().getTime();
-      const sessionTime = (endTime - startTimeRef.current) / 1000; // Convert to seconds
-      console.log(`Visiting session time: ${sessionTime} seconds`);
-    };
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getDisplayMedia({
+        video: { mediaSource: 'screen' },
+        audio: true, // Set to false if you don't want to record audio
+      });
+      setMediaStream(stream);
+      const recorder = new MediaRecorder(stream);
+      const chunks = [];
 
-    window.addEventListener('beforeunload', handleUnload);
+      recorder.ondataavailable = (e) => {
+        chunks.push(e.data);
+      };
 
-    return () => {
-      window.removeEventListener('beforeunload', handleUnload);
-    };
-  }, []);
+      recorder.onstop = () => {
+        const videoBlob = new Blob(chunks, { type: 'video/webm' });
+        setVideoBlob(videoBlob);
+      };
+
+      recorder.start();
+      setRecording(true);
+    } catch (error) {
+      console.error('Error accessing media devices:', error);
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaStream) {
+      mediaStream.getTracks().forEach(track => track.stop());
+    }
+    setRecording(false);
+  };
+
+  const downloadVideo = () => {
+    if (videoBlob) {
+      const url = URL.createObjectURL(videoBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'recorded_session.webm';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+  };
 
   return (
     <div>
-      <h1>Tracking Session Time</h1>
-      <p>This is your webpage content.</p>
+      <button onClick={recording ? stopRecording : startRecording}>
+        {recording ? 'Stop Recording' : 'Start Recording'}
+      </button>
+      {videoBlob && (
+        <div>
+          <video controls src={URL.createObjectURL(videoBlob)}></video>
+          <button onClick={downloadVideo}>Download Video</button>
+        </div>
+      )}
     </div>
   );
 };
 
-export default TrackSessionTime;
+export default UserSessionRecorder;
