@@ -9,8 +9,11 @@ import Dashboard from "./pages/Dashboard";
 import ABTesting from "./pages/ABTesting";
 import HeatMaps from "./pages/HeatMaps";
 import About from "./pages/About";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import UserApp from "./pages/UserApp";
 import TestRun from "./pages/TestRun";
+
 
 function App() {
   const location = useLocation();
@@ -31,6 +34,9 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/test" element={<UserApp />} />
         <Route exact path="/run" element={<TestRun />} />
+        <Route exact path="/signin" element={<SignIn />} />
+        <Route exact path="/signup" element={<SignUp />} />
+
       </Routes>
     </>
   );
