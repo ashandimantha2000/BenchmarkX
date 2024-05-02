@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 
 // Import Components
 import Sidebar from "../partials/Sidebar";
@@ -10,6 +11,9 @@ function ABTesting() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
+      <Helmet>
+        <title>A/B Testing | BenchmarkX</title>
+      </Helmet>
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
