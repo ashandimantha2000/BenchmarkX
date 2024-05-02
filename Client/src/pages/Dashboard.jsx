@@ -6,7 +6,8 @@ import WelcomeBanner from "../components/dashboard/WelcomeBanner";
 import UpdateCard from "../components/dashboard/UpdateCard";
 import HeatMaps from "../components/dashboard/HeatMaps";
 import ABTesting from "../components/dashboard/ABTesting";
-
+import OnsiteSurveys from "../components/dashboard/OnsiteSurveys";
+import SessionRecordings from "../components/dashboard/SessionRecordings";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -30,6 +31,10 @@ function Dashboard() {
             <div className="flex justify-between w-full">
               <HeatMaps />
               <ABTesting />
+            </div>
+            <div className="flex justify-between w-full">
+              <OnsiteSurveys />
+              <SessionRecordings />
             </div>
           </div>
         </main>
