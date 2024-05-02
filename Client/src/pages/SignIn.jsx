@@ -1,8 +1,45 @@
-import React from "react";
+import { Helmet } from "react-helmet";
+import { useState } from "react";
 
-function signin() {
+function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const validatePassword = () => {
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters long");
+    } else {
+      setPasswordError("");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateEmail();
+    validatePassword();
+
+    // Perform sign in logic if validations pass
+    if (!emailError && !passwordError) {
+      // Perform sign in logic here
+    }
+  };
+
   return (
     <div>
+      <Helmet>
+        <title>Sign In | BenchmarkX</title>
+      </Helmet>
       <div className="flex justify-center">
         <img
           src="../src/assets/images/Logo-Text.png"
@@ -18,7 +55,7 @@ function signin() {
           </h1>
           <h2>Enter your email and password to sign in</h2>
           <div className="pt-6 w-full max-w-xs">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
@@ -31,7 +68,13 @@ function signin() {
                   id="Email"
                   type="text"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={validateEmail}
                 />
+                {emailError && (
+                  <p className="text-red-500 text-xs italic">{emailError}</p>
+                )}
               </div>
               <div className="mb-6">
                 <label
@@ -45,12 +88,18 @@ function signin() {
                   id="password"
                   type="password"
                   placeholder="************"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onBlur={validatePassword}
                 />
+                {passwordError && (
+                  <p className="text-red-500 text-xs italic">{passwordError}</p>
+                )}
               </div>
               <div className="flex items-center justify-between">
                 <button
                   className="w-full bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
+                  type="submit"
                 >
                   SIGN IN
                 </button>
@@ -59,7 +108,7 @@ function signin() {
                 <p>Don’t have an account?</p>
                 <a
                   className="pl-5 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                  href="#"
+                  href="/signup"
                 >
                   Sign Up
                 </a>
@@ -79,4 +128,4 @@ function signin() {
   );
 }
 
-export default signin;
+export default Signin;

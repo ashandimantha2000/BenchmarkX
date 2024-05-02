@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TestApp from "../TestApp/MyApp";
 import HeatmapGenerator from "../components/HeatMap/HeatmapGenerator";
-
+import { Helmet } from "react-helmet";
 
 // Import Components
 import Sidebar from "../partials/Sidebar";
@@ -11,6 +11,9 @@ function HeatMaps() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
+      <Helmet>
+        <title>Heat Maps | BenchmarkX</title>
+      </Helmet>
       <Sidebar />
       {/* <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
 
@@ -25,12 +28,12 @@ function HeatMaps() {
             <hr></hr>
           </div>
           <div className="flex pb-3">
-          <h3 className="px-3 font-semibold">Application Name:</h3>
-          <h3>Nortion</h3>
+            <h3 className="px-3 font-semibold">Application Name:</h3>
+            <h3>Nortion</h3>
           </div>
           {/* TestApp Imported Here */}
-          <HeatmapGenerator/>
-          <TestApp/>
+          <HeatmapGenerator />
+          <TestApp />
         </main>
       </div>
     </div>
