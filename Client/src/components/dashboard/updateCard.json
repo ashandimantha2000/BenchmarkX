@@ -4,7 +4,7 @@
       {
         "id": 1,
         "score": "3/5",
-        "title": "Health Score",
+        "title": "NPS",
         "image": "../src/assets/icons/heart.png"
       },
       {
@@ -15,8 +15,8 @@
       },
       {
         "id": 3,
-        "score": "N/A",
-        "title": "Custom #1",
+        "score": "30s",
+        "title": "Avg. Session",
         "image": "../src/assets/icons/Custom.png"
       },
       {

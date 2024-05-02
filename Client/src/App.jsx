@@ -13,6 +13,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import UserApp from "./pages/UserApp";
 import TestRun from "./pages/TestRun";
+import FeedbackForm from "./pages/FeedbackForm";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/heatmaps" element={<HeatMaps />} />
         <Route exact path="/abtesting" element={<ABTesting />} />
+        <Route exact path="/feedback" element={<FeedbackForm />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/test" element={<UserApp />} />
         <Route exact path="/run" element={<TestRun />} />

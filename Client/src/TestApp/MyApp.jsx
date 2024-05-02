@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import VarientA from "../TestApp/ABTesting/VarientA";
 import VarientB from "../TestApp/ABTesting/VarientB";
+import Feedback from "./FeedBacks/Feedback";
 
 const UserApp = () => {
   const [variant, setVariant] = useState("");
@@ -49,7 +50,8 @@ const UserApp = () => {
   
 
   return (
-    <div>
+    <div className="relative">
+      <Feedback />
       {/*Add Testing Website Here */}
       <div className="h-screen bg-[url('https://4kwallpapers.com/images/wallpapers/texture-dark-background-purple-2560x1440-3086.jpg')]">
         <div className="h-full flex justify-center items-center">

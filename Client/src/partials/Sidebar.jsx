@@ -335,6 +335,21 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </ul>
           </div>
         </div>
+        <div className="mt-11 w-5/6 bg-gradient-to-r from-fuchsia-300 to-blue-300 rounded-xl py-4 items-center flex justify-center">
+          <div>
+            <img
+              src="../src/assets/images/dashboard/diamond.svg"
+              alt="diamond"
+            />
+            <h1 className="font-semibold text-sm text-white">Need Help?</h1>
+            <h1 className="font-normal text-xs text-white">
+              Please check our docs
+            </h1>
+            <button class="bg-white text-slate-600 text-xs hover:bg-gradient-to-r from-sky-400 to-blue-600 hover:text-white font-bold py-2 px-5 rounded-md">
+              DOCUMENTATION
+            </button>
+          </div>
+        </div>
 
         {/* Expand / collapse button */}
         <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
