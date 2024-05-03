@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import ApexCharts from 'apexcharts'
 
 // Import Components
 import Sidebar from "../partials/Sidebar";
