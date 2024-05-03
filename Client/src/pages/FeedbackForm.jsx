@@ -1,23 +1,50 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import Spinner from "../components/Spinner";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 function FeedbackForm() {
-  // SLider Values
-  const [value, setValue] = useState(5);
+  // Slider Values
+  const [recommend, setRecommend] = useState(5);
 
   // Yes/No Answer
-  const [answer, setAnswer] = useState("");
+  const [again, setAgain] = useState("");
 
-  // SLider setState
+  // Slider setState
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setRecommend(event.target.value);
   };
 
   // Yes/No Answer setState
   const handleAgainChange = (event) => {
-    //Handler for the Yes/No question
-    setAnswer(event.target.value);
+    setAgain(event.target.value);
   };
+
+  // Send Data to the server
+  const [feedback, setFeedback] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const handleSaveFeedback = () => {
+    const data = {
+      recommend,
+      again,
+      feedback,
+    };
+    setLoading(true);
+    axios
+      .post("http://localhost:5555/feedback", data)
+      .then(() => {
+        setLoading(false);
+        navigate("/Test");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Failed to save book");
+        setLoading(false);
+      });
+  };
+
   return (
     <div className="bg-gradient-to-r from-sky-400 to-blue-600">
       <Helmet>
@@ -48,8 +75,7 @@ function FeedbackForm() {
                     type="range"
                     min="0"
                     max="10"
-                    value={value}
-                    // value store the value of the slider
+                    value={recommend}
                     onChange={handleChange}
                     className="w-full bg-gradient-to-r from-sky-400 to-blue-600 appearance-none rounded-full h-3"
                   />
@@ -108,25 +134,16 @@ function FeedbackForm() {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="username"
                 type="text"
+                value={feedback}
+                onChange={(e) => setFeedback(e.target.value)}
                 placeholder="Enter Your Feedback"
               />
             </div>
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="feedback"
-            >
-              Your Suggestions for Improvement
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              type="text"
-              placeholder="Enter Your Suggestions"
-            />
             <br />
             <br />
             <div className="flex items-center justify-between">
               <button
+                onClick={handleSaveFeedback}
                 className="bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button"
               >
