@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
         if (!req.body.recommend || !req.body.again || !req.body.feedback) {
-            return res.status(400).send("Please provide all the details");
+            return res.status(400).send("Please provide all the details!");
         }
         const newFeedback = new Feedback({
             recommend: req.body.recommend,
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
         return res.status(201).send(feedback);
     } catch (error) {
         console.log(error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).send("Internal Server Error!");
     }
 });
 
