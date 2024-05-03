@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import Spinner from "../components/Spinner";
+import Spinner from "../../components/Spinner";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -23,7 +23,6 @@ function FeedbackForm() {
 
   // Send Data to the server
   const [feedback, setFeedback] = useState("");
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSaveFeedback = () => {
     const data = {
@@ -31,17 +30,16 @@ function FeedbackForm() {
       again,
       feedback,
     };
-    setLoading(true);
+
     axios
       .post("http://localhost:5555/feedback", data)
       .then(() => {
-        setLoading(false);
-        navigate("/Test");
+        // navigate("/Test");
+        window.close();
       })
       .catch((error) => {
         console.log(error);
         alert("Failed to save book");
-        setLoading(false);
       });
   };
 
