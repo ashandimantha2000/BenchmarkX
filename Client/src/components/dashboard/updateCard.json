@@ -1,0 +1,31 @@
+[
+  {
+    "updateScores": [
+      {
+        "id": 1,
+        "score": "3/5",
+        "title": "NPS",
+        "image": "../src/assets/icons/heart.png"
+      },
+      {
+        "id": 2,
+        "score": "42%",
+        "title": "Bounce Rate",
+        "image": "../src/assets/icons/Bounce.png"
+      },
+      {
+        "id": 3,
+        "score": "30s",
+        "title": "Avg. Session",
+        "image": "../src/assets/icons/Custom.png"
+      },
+      {
+        "id": 4,
+        "score": "N/A",
+        "title": "Custom #2",
+        "image": "../src/assets/icons/Custom.png"
+      }
+    ]
+  }
+  
+]

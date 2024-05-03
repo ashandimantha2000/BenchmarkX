@@ -3,8 +3,13 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
-/* Additional styles */
-@import 'additional-styles/utility-patterns.css';
-@import 'additional-styles/flatpickr.css';
 
 @import 'tailwindcss/utilities';
+
+
+/* Reusable Custom CSS Classes */
+.sub-heading{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #3377EE;
+}
