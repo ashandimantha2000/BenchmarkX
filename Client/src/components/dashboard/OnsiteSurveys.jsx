@@ -22,6 +22,7 @@ function OnsiteSurveys() {
 
   return (
     <div className="bg-slate-100 w-4/5 h-fit rounded-lg drop-shadow-xl shadow-slate-300 mt-8 mr-11 p-7">
+      
       <h1 className="text-emerald-500 text-xl font-bold">Onsite Surveys</h1>
 
       <div>
@@ -44,7 +45,7 @@ function OnsiteSurveys() {
               <Spinner />
             ) : (
               <tbody>
-                {feedbacks.map((feedback, index) => (
+                {feedbacks.slice(0, 5).map((feedback, index) => (
                   <tr
                     key={feedback._id}
                     className=" border-b dark:bg-gray-800 dark:border-gray-700"
@@ -62,6 +63,16 @@ function OnsiteSurveys() {
               </tbody>
             )}
           </table>
+          <a href="/Survey" className="flex justify-center py-4">
+            <div className="flex items-center justify-between">
+              <button
+                className="w-fit bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Show More
+              </button>
+            </div>
+          </a>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ import SignUp from "./pages/SignUp";
 import UserApp from "./pages/UserApp";
 import TestRun from "./pages/TestRun";
 import FeedbackForm from "./TestApp/FeedBacks/FeedbackForm";
-
+import Surveys from "./pages/Survey";
 
 
 function App() {
@@ -55,6 +55,7 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/signin" element={<SignIn />} />
         <Route exact path="/signup" element={<SignUp />} />
+        <Route exact path="/survey" element={<Surveys />} />
       </Routes>
       {/* Test App Routes */}
       <Routes>
