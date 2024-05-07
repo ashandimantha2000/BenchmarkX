@@ -1,13 +1,56 @@
-//Red Button Variant
 import React, { useState } from "react";
-function VarientB() {
-  //Function to get the CTA count
-  const [count, setCount] = useState(0);
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-  const handleClick = () => {
-    setCount(count + 1);
+function VarientB() {
+
+  const [varientBClicks, setvarientBClicks] = useState(0);
+  const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  //Define toast message
+  const success = () => toast("You Clicked the Red Button!");
+
+  const validateForm = () => {
+    if (email === "") {
+      setErrorMessage("Email is required");
+      return false;
+    }
+    // Reset error message if validation passes
+    setErrorMessage("");
+    return true;
   };
-  console.log("Red Button Clicks =" + count);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+    setvarientBClicks(varientBClicks + 1);
+    success();
+
+    try {
+      const response = await fetch('http://localhost:5555/varientB', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ varientBClicks: varientBClicks + 1 }),
+      });
+
+      if (!response.ok) {
+        throw new Error('HTTP error ' + response.status);
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log("Red Button Clicks =" + varientBClicks);
+
   return (
     <div>
       <form className="font-secondary flex flex-shrink w-full px-2 max-w-lg mx-auto justify-center">
@@ -16,7 +59,9 @@ function VarientB() {
           type="email"
           required
           placeholder="Your email here"
+          onChange={(e) => setEmail(e.target.value)}
         />
+        
         <button
           onClick={handleClick}
           type="submit"
@@ -25,7 +70,10 @@ function VarientB() {
         >
           Subscribe
         </button>
+        
       </form>
+      <div className="flex justify-center text-red-500">{errorMessage && <p>{errorMessage}</p>}</div>
+      <ToastContainer />
     </div>
   );
 }
