@@ -15,7 +15,6 @@ import UserApp from "./pages/UserApp";
 import TestRun from "./pages/TestRun";
 import FeedbackForm from "./TestApp/FeedBacks/FeedbackForm";
 
-
 function App() {
   const location = useLocation();
 
@@ -27,18 +26,20 @@ function App() {
 
   return (
     <>
-      {/* Use Outlets */}
       <Routes>
+        {/* BenchmarkX Routes */}
         <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/heatmaps" element={<HeatMaps />} />
         <Route exact path="/abtesting" element={<ABTesting />} />
-        <Route exact path="/test/feedback" element={<FeedbackForm />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact path="/test" element={<UserApp />} />
-        <Route exact path="/run" element={<TestRun />} />
         <Route exact path="/signin" element={<SignIn />} />
         <Route exact path="/signup" element={<SignUp />} />
-
+      </Routes>
+      {/* Test App Routes */}
+      <Routes>
+        <Route exact path="/test" element={<UserApp />} />
+        <Route exact path="/run" element={<TestRun />} />
+        <Route exact path="/test/feedback" element={<FeedbackForm />} />
       </Routes>
     </>
   );

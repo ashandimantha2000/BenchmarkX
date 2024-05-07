@@ -268,7 +268,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
-                            <NavLink
+                            {/* <NavLink
                               end
                               to="/signin"
                               className="block text-slate-400 hover:text-primary_blue transition duration-150 truncate"
@@ -276,7 +276,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Sign in
                               </span>
-                            </NavLink>
+                            </NavLink> */}
                           </li>
                           <li className="mb-1 last:mb-0">
                             <NavLink
@@ -285,7 +285,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               className="block text-slate-400 hover:text-primary_blue transition duration-150 truncate"
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Sign up
+                                Create Accounts
                               </span>
                             </NavLink>
                           </li>
@@ -335,19 +335,24 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </ul>
           </div>
         </div>
-        <div className="mt-11 w-5/6 bg-gradient-to-r from-fuchsia-300 to-blue-300 rounded-xl py-4 items-center flex justify-center">
+        <div className="mt-20 w-11/12 h-48 bg-gradient-to-r from-fuchsia-300 to-blue-300 rounded-xl py-4 items-center flex justify-center">
           <div>
             <img
               src="../src/assets/images/dashboard/diamond.svg"
               alt="diamond"
             />
-            <h1 className="font-semibold text-sm text-white">Need Help?</h1>
-            <h1 className="font-normal text-xs text-white">
-              Please check our docs
+            <h1 className="font-semibold text-sm text-white">
+              Want to see how
             </h1>
-            <button class="bg-white text-slate-600 text-xs hover:bg-gradient-to-r from-sky-400 to-blue-600 hover:text-white font-bold py-2 px-5 rounded-md">
-              DOCUMENTATION
-            </button>
+            <h1 className="font-normal text-xs text-white pb-4">
+              BenchmarkX works?
+            </h1>
+
+            <a href="/Test" target="_blank">
+              <button class="w-36 bg-white text-slate-600 text-xs hover:bg-gradient-to-r from-sky-400 to-blue-600 hover:text-white font-bold py-2 px-5 rounded-md">
+                Run Demo App
+              </button>
+            </a>
           </div>
         </div>
 

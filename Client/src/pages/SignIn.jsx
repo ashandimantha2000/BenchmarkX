@@ -7,14 +7,14 @@ function Signin() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const validateEmail = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setEmailError("Please enter a valid email address");
-    } else {
-      setEmailError("");
-    }
-  };
+  // const validateEmail = () => {
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   if (!emailRegex.test(email)) {
+  //     setEmailError("Please enter a valid email address");
+  //   } else {
+  //     setEmailError("");
+  //   }
+  // };
 
   const validatePassword = () => {
     if (password.length < 6) {
@@ -66,11 +66,11 @@ function Signin() {
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="Email"
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  onBlur={validateEmail}
+                  // onBlur={validateEmail}
                 />
                 {emailError && (
                   <p className="text-red-500 text-xs italic">{emailError}</p>
