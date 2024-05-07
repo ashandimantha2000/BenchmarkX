@@ -8,8 +8,8 @@ function Scores() {
   const [averageSession, setAverageSession] = useState(0);
   const [bounceRate, setBounceRate] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [varientAClicks, setVarientAClicks] = useState(0); // New state variable
-  const [varientBClicks, setVarientBClicks] = useState(0); // New state variable
+  const [varientAClicks, setVarientAClicks] = useState(0); 
+  const [varientBClicks, setVarientBClicks] = useState(0); 
 
   //Get NPS from Server
   useEffect(() => {

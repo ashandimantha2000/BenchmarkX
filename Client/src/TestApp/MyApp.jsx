@@ -3,7 +3,7 @@ import VarientA from "../TestApp/ABTesting/VarientA";
 import VarientB from "../TestApp/ABTesting/VarientB";
 import Feedback from "./FeedBacks/Feedback";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom"
+import { Helmet } from "react-helmet";
 
 const UserApp = () => {
   const [variant, setVariant] = useState("");
@@ -66,6 +66,9 @@ const UserApp = () => {
   return (
     <div className="relative">
       <Feedback />
+      <Helmet>
+        <title>Demo App (Nortion) | BenchmarkX</title>
+      </Helmet>
       <div>
         <div className="h-screen bg-[url('https://4kwallpapers.com/images/wallpapers/texture-dark-background-purple-2560x1440-3086.jpg')]">
           <div className="h-full flex justify-center items-center">
@@ -90,6 +93,7 @@ const UserApp = () => {
                   </div>
                 )}
               </div>
+              <div className="flex justify-center pt-5 text-white italic text-opacity-50">This is an demo application of BenchmarkX*</div>
             </div>
           </div>
         </div>
