@@ -8,6 +8,7 @@ import ABTesting from "../components/dashboard/ABTesting";
 import OnsiteSurveys from "../components/dashboard/OnsiteSurveys";
 import SessionRecordings from "../components/dashboard/SessionRecordings";
 import Scores from "../components/dashboard/Scores";
+import Sessions from "../components/dashboard/Sessions";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,7 +35,8 @@ function Dashboard() {
             </div>
             <div className="flex justify-between w-full">
               <OnsiteSurveys />
-              <SessionRecordings />
+              {/* <SessionRecordings /> */}
+              <Sessions />
             </div>
           </div>
         </main>
