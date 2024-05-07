@@ -8,6 +8,8 @@ function Scores() {
   const [averageSession, setAverageSession] = useState(0);
   const [bounceRate, setBounceRate] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [varientAClicks, setVarientAClicks] = useState(0); // New state variable
+  const [varientBClicks, setVarientBClicks] = useState(0); // New state variable
 
   //Get NPS from Server
   useEffect(() => {
@@ -56,6 +58,30 @@ function Scores() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
+  // Get varient A clicks from server
+  useEffect(() => {
+    axios
+      .get("http://localhost:5555/varientA")
+      .then((response) => {
+        setVarientAClicks(response.data.count);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // Get varient B clicks from server
+  useEffect(() => {
+    axios
+      .get("http://localhost:5555/varientB")
+      .then((response) => {
+        setVarientBClicks(response.data.count);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
       {/* {feedbacks.map((feedback, index) => (
@@ -77,7 +103,7 @@ function Scores() {
         {/* Total CTAs */}
         <UpdateCard
           title="Total CTAs"
-          score="-"
+          score={`${varientAClicks + varientBClicks}`} // Use the state variables here
           image="../src/assets/icons/CTA.png"
         />
         {/* Net Promoter Score */}

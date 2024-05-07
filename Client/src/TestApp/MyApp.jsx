@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom"
 
 const UserApp = () => {
   const [variant, setVariant] = useState("");
+  const [varientAClicks, setVarientAClicks] = useState(0);
   const [sessionDuration, setSessionDuration] = useState(0);
   const startTimeRef = useRef(new Date().getTime());
 
@@ -18,6 +19,7 @@ const UserApp = () => {
       setVariant("B");
     }
   };
+
 
   useEffect(() => {
     chooseVariant();
