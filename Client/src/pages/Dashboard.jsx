@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
 import WelcomeBanner from "../components/dashboard/WelcomeBanner";
-import UpdateCard from "../components/dashboard/UpdateCard";
 import HeatMaps from "../components/dashboard/HeatMaps";
 import ABTesting from "../components/dashboard/ABTesting";
 import OnsiteSurveys from "../components/dashboard/OnsiteSurveys";
 import SessionRecordings from "../components/dashboard/SessionRecordings";
+import Scores from "../components/dashboard/Scores";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -27,7 +27,7 @@ function Dashboard() {
             {/* Welcome banner */}
             <WelcomeBanner />
             <h1>Nortion</h1>
-            <UpdateCard />
+            <Scores />
             <div className="flex justify-between w-full">
               <HeatMaps />
               <ABTesting />
