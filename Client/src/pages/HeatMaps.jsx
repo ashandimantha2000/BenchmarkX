@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TestApp from "../TestApp/MyApp";
-import HeatmapGenerator from "../components/HeatMap/HeatmapGenerator";
+import HeatMapPreview from "../components/HeatMap/HeatMapPreview";
 import { Helmet } from "react-helmet";
 
 // Import Components
@@ -9,6 +9,23 @@ import Header from "../partials/Header";
 
 function HeatMaps() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const [movements, setMovements] = useState([]);
+
+  useEffect(() => {
+    const savedMovements = localStorage.getItem("movements");
+    if (savedMovements) {
+      setMovements(JSON.parse(savedMovements));
+    }
+  }, []);
+
+  const handleMovement = (movement) => {
+    setMovements((prevMovements) => {
+      const newMovements = [...prevMovements, movement];
+      localStorage.setItem("movements", JSON.stringify(newMovements));
+      return newMovements;
+    });
+  };
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
       <Helmet>
@@ -23,17 +40,20 @@ function HeatMaps() {
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
-          <div className="px-4 sm:px-6 lg:px-8 py-6 w-full max-w-9xl mx-auto flex-1">
-            <h1 className="sub-heading">Heat Maps</h1>
-            <hr></hr>
+          <div className="px-4 sm:px-6 lg:px-8 pt-6 w-full max-w-9xl mx-auto flex-1">
+            <h1 className="sub-heading">Heat Maps <span className="font-normal text-lg">Nortion</span></h1>
+            <hr />
           </div>
-          <div className="flex pb-3">
-            <h3 className="px-3 font-semibold">Application Name:</h3>
-            <h3>Nortion</h3>
+
+          <div>
+            <div>
+              <div className="absolute z-10">
+                <HeatMapPreview  />
+              </div>
+              {/* TestApp Imported Here */}
+             <div className="mx-12 py-8"> <TestApp /></div>
+            </div>
           </div>
-          {/* TestApp Imported Here */}
-          <HeatmapGenerator />
-          <TestApp />
         </main>
       </div>
     </div>
