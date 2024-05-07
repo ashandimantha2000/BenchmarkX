@@ -1,44 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import { Chart, ArcElement, CategoryScale, Title, Tooltip } from "chart.js";
-
-Chart.register(ArcElement, CategoryScale, Title, Tooltip);
-
-// Import Components
 import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
-import VarientA from "../TestApp/ABTesting/VarientA";
-import VarientB from "../TestApp/ABTesting/VarientB";
 
-function ABTesting(props) {
+function About() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [varientAClicks, setVarientAClicks] = useState(0);
-  const [varientBClicks, setVarientBClicks] = useState(0);
-
-  useEffect(() => {
-    // Fetch varient A clicks
-    fetch("http://localhost:5555/varientA")
-      .then((response) => response.json())
-      .then((data) => setVarientAClicks(data.count))
-      .catch((error) => console.error(error));
-
-    // Fetch varient B clicks
-    fetch("http://localhost:5555/varientB")
-      .then((response) => response.json())
-      .then((data) => setVarientBClicks(data.count))
-      .catch((error) => console.error(error));
-  }, []);
-
-  const data = {
-    labels: ["Varient A", "Varient B"],
-    datasets: [
-      {
-        data: [varientAClicks, varientBClicks],
-        backgroundColor: ["#DC2626", "#9333DA"],
-        hoverBackgroundColor: ["#EB3D8D", "#0F52BA"],
-      },
-    ],
-  };
 
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
@@ -169,4 +135,4 @@ function ABTesting(props) {
   );
 }
 
-export default ABTesting;
+export default About;

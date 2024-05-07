@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from "react-router-dom";
 
 //Import CSS Styles
@@ -15,6 +15,8 @@ import UserApp from "./pages/UserApp";
 import TestRun from "./pages/TestRun";
 import FeedbackForm from "./TestApp/FeedBacks/FeedbackForm";
 
+
+
 function App() {
   const location = useLocation();
 
@@ -23,6 +25,25 @@ function App() {
     window.scroll({ top: 0 });
     document.querySelector("html").style.scrollBehavior = "";
   }, [location.pathname]); // triggered on route change
+
+  //HeatMaps Interaction
+  const [movements, setMovements] = useState([]);
+
+  useEffect(() => {
+    const savedMovements = localStorage.getItem('movements');
+    if (savedMovements) {
+      setMovements(JSON.parse(savedMovements));
+    }
+  }, []);
+
+  const handleMovement = (movement) => {
+    setMovements((prevMovements) => {
+      const newMovements = [...prevMovements, movement];
+      localStorage.setItem('movements', JSON.stringify(newMovements));
+      return newMovements;
+    });
+  };
+
 
   return (
     <>
@@ -37,9 +58,14 @@ function App() {
       </Routes>
       {/* Test App Routes */}
       <Routes>
-        <Route exact path="/test" element={<UserApp />} />
-        <Route exact path="/run" element={<TestRun />} />
+        <Route exact path="/test" element={<UserApp onMovement={handleMovement} />} />
+
         <Route exact path="/test/feedback" element={<FeedbackForm />} />
+      </Routes>
+      {/* Developing Testing */}
+      <Routes>
+        <Route exact path="/run" element={<TestRun />} />
+
       </Routes>
     </>
   );
