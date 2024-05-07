@@ -6,6 +6,7 @@ import feedbackRoute from "./routes/feedbackRoute.js";
 import sessionRoute from "./routes/sessionRoute.js";
 import varientARoute from "./routes/varientARoute.js";
 import varientBRoute from "./routes/varientBRoute.js";
+import heatmapRoute from "./routes/heatmapRoute.js";
 
 const app = express();
 
@@ -33,6 +34,9 @@ app.use("/sessions", sessionRoute);
 //route for Varients
 app.use("/varientA", varientARoute);
 app.use("/varientB", varientBRoute);
+
+//route for Heatmap
+app.use("/heatmap", heatmapRoute);
 
 //connect to mongoose
 mongoose
