@@ -1,7 +1,11 @@
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
+import Sidebar from "../partials/Sidebar";
+import Header from "../partials/Header";
 
 function Signup() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -38,22 +42,25 @@ function Signup() {
       setErrors(errors);
     }
   };
-
   return (
-    <div>
+    <div className="flex h-screen overflow-hidden bg-light_background">
       <Helmet>
         <title>Create a New Account | BenchmarkX</title>
       </Helmet>
-      <div className="flex justify-center">
+      {/* Sidebar */}
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+      {/* Content area */}
+      {/* <div className="flex justify-center">
         <img
           src="../src/assets/images/Logo-Text.png"
           alt="logo"
           width={150}
           className="absolute pt-10"
         />
-      </div>
-      <div className="flex justify-between">
-        <div className="px-48 pt-32 h-screen">
+      </div> */}
+      <div className="flex">
+        <div className="px-32 pt-24 w-fit">
           <h1 className="pb-2 text-3xl font-bold bg-gradient-to-r from-sky-400 to-blue-600 inline-block text-transparent bg-clip-text">
             Create a New User Account
           </h1>
@@ -141,7 +148,7 @@ function Signup() {
                 </button>
               </div>
 
-              {/* <div className="flex items-center pt-7">
+              <div className="flex items-center pt-7">
                 <p>Already have an account?</p>
                 <a
                   className="pl-5 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
@@ -149,11 +156,11 @@ function Signup() {
                 >
                   Sign In
                 </a>
-              </div> */}
+              </div>
             </form>
           </div>
         </div>
-        <div>
+        <div className="flex justify-end">
           <img
             src="../src/assets/images/auth-back.svg"
             alt="background-image"
