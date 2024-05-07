@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import Spinner from "../../components/Spinner";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function FeedbackForm() {
   // Slider Values
@@ -21,6 +22,10 @@ function FeedbackForm() {
     setAgain(event.target.value);
   };
 
+  //Define toast message
+  const feedbackSent = () => toast("Feedback sent successfully! Thank you! You will be redirected to the home page.");
+  const feedbackSentFail = () => toast("Please Fill out all the details.");
+
   // Send Data to the server
   const [feedback, setFeedback] = useState("");
   const navigate = useNavigate();
@@ -35,11 +40,17 @@ function FeedbackForm() {
       .post("http://localhost:5555/feedback", data)
       .then(() => {
         // navigate("/Test");
-        window.close();
+        //run toast message
+        feedbackSent();
+
+        setTimeout(() => {
+          window.close();
+        }, 3000);
       })
       .catch((error) => {
         console.log(error);
-        alert("Failed to save book");
+        // alert("Failed to send feedback!");
+        feedbackSentFail();
       });
   };
 
@@ -149,6 +160,7 @@ function FeedbackForm() {
               </button>
             </div>
           </form>
+          <ToastContainer />
           <p className="text-center text-white">
             &copy;2024 BenchmarkX. All rights reserved.
           </p>

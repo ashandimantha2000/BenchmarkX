@@ -13,11 +13,11 @@ function Signup() {
     // Perform validation
     const errors = {};
 
-    if (!email) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      errors.email = "Invalid email format";
-    }
+    // if (!email) {
+    //   errors.email = "Email is required";
+    // } else if (!/\S+@\S+\.\S+/.test(email)) {
+    //   errors.email = "Invalid email format";
+    // }
 
     if (!password) {
       errors.password = "Password is required";
@@ -42,7 +42,7 @@ function Signup() {
   return (
     <div>
       <Helmet>
-        <title>Sign Up | BenchmarkX</title>
+        <title>Create a New Account | BenchmarkX</title>
       </Helmet>
       <div className="flex justify-center">
         <img
@@ -54,11 +54,14 @@ function Signup() {
       </div>
       <div className="flex justify-between">
         <div className="px-48 pt-32 h-screen">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-400 to-blue-600 inline-block text-transparent bg-clip-text">
-            Sign Up
+          <h1 className="pb-2 text-3xl font-bold bg-gradient-to-r from-sky-400 to-blue-600 inline-block text-transparent bg-clip-text">
+            Create a New User Account
           </h1>
-          <h2>Enter your email and password to register</h2>
-          <div className="pt-6 w-full max-w-xs">
+          <h2>
+            Enter the details to create a <span className="font-bold">new</span>{" "}
+            user account.
+          </h2>
+          <div className="pt-10 w-full max-w-xs">
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
@@ -72,9 +75,10 @@ function Signup() {
                     errors.email ? "border-red-500" : ""
                   }`}
                   id="Email"
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   value={email}
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 {errors.email && (
@@ -96,6 +100,7 @@ function Signup() {
                   type="password"
                   placeholder="************"
                   value={password}
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 {errors.password && (
@@ -118,6 +123,7 @@ function Signup() {
                   type="password"
                   placeholder="************"
                   value={repeatPassword}
+                  required
                   onChange={(e) => setRepeatPassword(e.target.value)}
                 />
                 {errors.repeatPassword && (
@@ -131,10 +137,11 @@ function Signup() {
                   className="w-full bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
                 >
-                  SIGN UP
+                  Register the New User
                 </button>
               </div>
-              <div className="flex items-center pt-7">
+
+              {/* <div className="flex items-center pt-7">
                 <p>Already have an account?</p>
                 <a
                   className="pl-5 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
@@ -142,7 +149,7 @@ function Signup() {
                 >
                   Sign In
                 </a>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

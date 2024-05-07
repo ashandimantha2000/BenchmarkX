@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const bookSchema = new mongoose.Schema(
+const feedbackSchema = new mongoose.Schema(
     {
         recommend:{
             type: String,
@@ -20,4 +20,4 @@ const bookSchema = new mongoose.Schema(
     }
 );
 
-export const Feedback = mongoose.model('Feedback',bookSchema);
+export const Feedback = mongoose.model('Feedback',feedbackSchema);
