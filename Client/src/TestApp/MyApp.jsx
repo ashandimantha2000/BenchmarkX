@@ -93,7 +93,7 @@ const UserApp = () => {
                   </div>
                 )}
               </div>
-              <div className="flex justify-center pt-5 text-white italic text-opacity-">This is a demo application of BenchmarkX*</div>
+              <div className="flex justify-center pt-5 text-white italic text-opacity-50">This is a demo application of BenchmarkX*</div>
             
             </div>
           </div>

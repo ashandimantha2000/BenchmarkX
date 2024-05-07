@@ -5,10 +5,12 @@ const HeatMapPreview = () => {
   const [movements, setMovements] = useState([]);
 
   useEffect(() => {
-    const savedMovements = localStorage.getItem("movements");
-    if (savedMovements) {
-      setMovements(JSON.parse(savedMovements));
-    }
+    fetch('http://localhost:5555/heatmap')
+      .then(response => response.json())
+      .then(data => setMovements(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }, []);
 
   // Define the size of the heatmap grid

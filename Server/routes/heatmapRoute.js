@@ -4,21 +4,16 @@ const router = express.Router();
 
 // Route to save heatmap data to the database
 router.post("/", async (req, res) => {
+  const { x, y } = req.body;
+  const heatmap = new Heatmap({
+    x,
+    y,
+  });
   try {
-    if (!req.body.xLabels || !req.body.yLabels) {
-      return res.status(400).send("No heatmap data identified!");
-    }
-    const newHeatmap = new Heatmap({
-      xLabels: req.body.xLabels,
-      yLabels: req.body.yLabels,
-    });
-
-    const heatmap = await newHeatmap.save();
-
-    return res.status(201).send(heatmap);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("Internal Server Error!");
+    const savedHeatmap = await heatmap.save();
+    res.status(201).json(savedHeatmap);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
   }
 });
 
@@ -26,11 +21,9 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const heatmap = await Heatmap.find();
-    const count = heatmap.length;
-    return res.status(200).send({ count, data: heatmap });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("Internal Server Error!");
+    res.status(200).json(heatmap);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
