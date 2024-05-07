@@ -3,6 +3,9 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import feedbackRoute from "./routes/feedbackRoute.js";
+import sessionRoute from "./routes/sessionRoute.js";
+import varientARoute from "./routes/varientARoute.js";
+import varientBRoute from "./routes/varientBRoute.js";
 
 const app = express();
 
@@ -23,6 +26,13 @@ app.listen(PORT, () => {
 
 //route for feedbacks
 app.use("/feedback", feedbackRoute);
+
+//route for sessions
+app.use("/sessions", sessionRoute);
+
+//route for Varients
+app.use("/varientA", varientARoute);
+app.use("/varientB", varientBRoute);
 
 //connect to mongoose
 mongoose

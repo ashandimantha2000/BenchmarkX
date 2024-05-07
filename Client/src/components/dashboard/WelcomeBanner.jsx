@@ -30,12 +30,12 @@ function WelcomeBanner() {
         {/* added gradient to the text */}
         <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">
           {greeting}, Benchmark
-          <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... inline-block text-transparent bg-clip-text">
+          <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 inline-block text-transparent bg-clip-text">
             X
           </span>{" "}
           👋
         </h1>
-        <p className="dark:text-indigo-200">Make. Test. Analyze. Insight.</p>
+        <p className="dark:text-indigo-200">Make. Test. Analyze. Insight. Evaluate.</p>
       </div>
     </div>
   );
