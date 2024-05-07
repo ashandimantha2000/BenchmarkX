@@ -1,15 +1,17 @@
 import mongoose from "mongoose";
 
-const heatmapSchema = mongoose.Schema({
-  xLabels: {
-    type: Array,
+const heatmapSchema = new mongoose.Schema({
+  x: {
+    type: Number,
     required: true,
   },
-
-  yLabels: {
-    type: Array,
+  y: {
+    type: Number,
     required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
-
 export const Heatmap = mongoose.model("Heatmap", heatmapSchema);
