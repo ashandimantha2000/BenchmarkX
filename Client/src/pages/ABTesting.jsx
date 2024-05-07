@@ -58,7 +58,7 @@ function ABTesting(props) {
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-6 w-full max-w-9xl mx-auto flex-1">
             <h1 className="sub-heading">A/B Testing</h1>
-            <hr></hr>
+         <hr />
           </div>
           <div>
             <div className="px-4 sm:px-6 lg:px-8 py-6 w-full max-w-9xl mx-auto">
@@ -100,7 +100,7 @@ function ABTesting(props) {
           <br />
           <div className="flex">
             <div className="bg-white drop-shadow-xl shadow-slate-300 ml-10 rounded-2xl w-96 pb-9 ">
-              <h1 className="text-lg text-gray-600 font-bold p-7">
+              <h1 className="text-lg text-gray-500 font-bold p-7">
                 Call to Action Clicks
               </h1>
               <div className="px-10 " style={{ width: "100%" }}>
@@ -108,7 +108,7 @@ function ABTesting(props) {
               </div>
             </div>
             <div className="bg-white ml-10 rounded-2xl drop-shadow-xl shadow-slate-300 w-96 pb-9 h-fit">
-              <h1 className="text-lg text-red-600 font-bold px-7 pt-7">
+              <h1 className="text-xl text-red-600 font-bold px-7 pt-7">
                 Results
                 <span className="font-normal text-gray-500">
                   {" "}
@@ -138,7 +138,8 @@ function ABTesting(props) {
                   <hr />
                   <h2 className="pt-3 px-2 text-sm">
                     *Considering CTA clicks and conversion rates. <br />
-                    With the collected data. The accuracy of the results may high when the sample size is large.
+                    With the collected data. The accuracy of the results may
+                    high when the sample size is large.
                   </h2>
                 </div>
               </div>
