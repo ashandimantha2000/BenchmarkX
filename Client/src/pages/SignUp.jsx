@@ -2,46 +2,50 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Signup() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    retypePassword: "",
+  });
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Perform validation
-    const errors = {};
-
-    // if (!email) {
-    //   errors.email = "Email is required";
-    // } else if (!/\S+@\S+\.\S+/.test(email)) {
-    //   errors.email = "Invalid email format";
-    // }
-
-    if (!password) {
-      errors.password = "Password is required";
-    } else if (password.length < 6) {
-      errors.password = "Password must be at least 6 characters long";
+    if (data.password !== data.retypePassword) {
+      setError("Passwords do not match");
+      return;
     }
-
-    if (!repeatPassword) {
-      errors.repeatPassword = "Repeat password is required";
-    } else if (repeatPassword !== password) {
-      errors.repeatPassword = "Passwords do not match";
-    }
-
-    if (Object.keys(errors).length === 0) {
-      // Submit the form
-      console.log("Form submitted");
-    } else {
-      setErrors(errors);
+    try {
+      const url = "http://localhost:5555/register";
+      navigate('/signin');
+      const { data: res } = await axios.post(url, data);
+      alert('Registration successful! Please login to continue.');
+      // 
+      
+      
+      console.log(res.message);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
     }
   };
+
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
       <Helmet>
@@ -51,14 +55,6 @@ function Signup() {
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       {/* Content area */}
-      {/* <div className="flex justify-center">
-        <img
-          src="../src/assets/images/Logo-Text.png"
-          alt="logo"
-          width={150}
-          className="absolute pt-10"
-        />
-      </div> */}
       <div className="flex">
         <div className="px-32 pt-24 w-fit">
           <h1 className="pb-2 text-3xl font-bold bg-gradient-to-r from-sky-400 to-blue-600 inline-block text-transparent bg-clip-text">
@@ -78,19 +74,15 @@ function Signup() {
                   Email
                 </label>
                 <input
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                    errors.email ? "border-red-500" : ""
-                  }`}
+                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
                   id="Email"
                   type="email"
+                  name="email"
                   placeholder="Email"
-                  value={email}
+                  value={data.email}
                   required
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleChange}
                 />
-                {errors.email && (
-                  <p className="text-red-500 text-xs italic">{errors.email}</p>
-                )}
               </div>
               <div className="mb-6">
                 <label
@@ -100,45 +92,34 @@ function Signup() {
                   Password
                 </label>
                 <input
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${
-                    errors.password ? "border-red-500" : ""
-                  }`}
+                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                   id="password"
                   type="password"
                   placeholder="************"
-                  value={password}
+                  name="password"
+                  value={data.password}
                   required
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={handleChange}
                 />
-                {errors.password && (
-                  <p className="text-red-500 text-xs italic">
-                    {errors.password}
-                  </p>
-                )}
-                {/* retype password*/}
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="repeat-password"
-                >
-                  Repeat Password
-                </label>
-                <input
-                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${
-                    errors.repeatPassword ? "border-red-500" : ""
-                  }`}
-                  id="repeat-password"
-                  type="password"
-                  placeholder="************"
-                  value={repeatPassword}
-                  required
-                  onChange={(e) => setRepeatPassword(e.target.value)}
-                />
-                {errors.repeatPassword && (
-                  <p className="text-red-500 text-xs italic">
-                    {errors.repeatPassword}
-                  </p>
-                )}
               </div>
+              {/* retype password*/}
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="repeat-password"
+              >
+                Repeat Password
+              </label>
+              <input
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
+                id="repeat-password"
+                type="password"
+                placeholder="************"
+                value={data.retypePassword}
+                required
+                name="retypePassword"
+                onChange={handleChange}
+              />
+              {error && <p className="text-red-500">{error}</p>}
               <div className="flex items-center justify-between">
                 <button
                   className="w-full bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -150,12 +131,12 @@ function Signup() {
 
               <div className="flex items-center pt-7">
                 <p>Already have an account?</p>
-                <a
+                <Link
                   className="pl-5 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                  href="/signin"
+                  to="/signin"
                 >
                   Sign In
-                </a>
+                </Link>
               </div>
             </form>
           </div>

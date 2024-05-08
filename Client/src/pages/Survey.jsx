@@ -6,6 +6,10 @@ import Header from "../partials/Header";
 import { Helmet } from "react-helmet";
 
 function Survey() {
+  const user = localStorage.getItem("token");
+  if (user === null) {
+    window.location.href = "/signin";
+  }
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(false);

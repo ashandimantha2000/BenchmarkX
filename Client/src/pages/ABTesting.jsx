@@ -13,6 +13,10 @@ import VarientA from "../TestApp/ABTesting/VarientA";
 import VarientB from "../TestApp/ABTesting/VarientB";
 
 function ABTesting(props) {
+  const user = localStorage.getItem("token");
+  if (user === null) {
+    window.location.href = "/signin";
+  }
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [varientAClicks, setVarientAClicks] = useState(0);
   const [varientBClicks, setVarientBClicks] = useState(0);

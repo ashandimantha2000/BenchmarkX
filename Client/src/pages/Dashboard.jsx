@@ -11,6 +11,10 @@ import Scores from "../components/dashboard/Scores";
 import Sessions from "../components/dashboard/Sessions";
 
 function Dashboard() {
+  const user = localStorage.getItem("token");
+  if (user === null) {
+    window.location.href = "/signin";
+  }
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (

@@ -5,9 +5,13 @@ import Header from "../partials/Header";
 
 function About() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const user = localStorage.getItem("token");
+  if (user === null) {
+    window.location.href = "/signin";
+  }
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
+      
       <Helmet>
         <title>About | BenchmarkX</title>
       </Helmet>
