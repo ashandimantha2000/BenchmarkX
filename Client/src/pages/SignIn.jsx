@@ -1,37 +1,36 @@
 import { Helmet } from "react-helmet";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 function Signin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [data, setData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  // const validateEmail = () => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   if (!emailRegex.test(email)) {
-  //     setEmailError("Please enter a valid email address");
-  //   } else {
-  //     setEmailError("");
-  //   }
-  // };
-
-  const validatePassword = () => {
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long");
-    } else {
-      setPasswordError("");
-    }
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    validateEmail();
-    validatePassword();
-
-    // Perform sign in logic if validations pass
-    if (!emailError && !passwordError) {
-      // Perform sign in logic here
+    try {
+      const url = "http://localhost:5555/login";
+      const { data: res } = await axios.post(url, data);
+      localStorage.setItem("token", res.token);
+      console.log(res);
+      if (res === "OK") {
+        navigate("/");
+      }
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
     }
   };
 
@@ -68,12 +67,13 @@ function Signin() {
                   id="Email"
                   type="email"
                   placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  // onBlur={validateEmail}
+                  onChange={handleChange}
+                  name="email"
+                  value={data.email}
+                  required
                 />
-                {emailError && (
-                  <p className="text-red-500 text-xs italic">{emailError}</p>
+                {error && (
+                  <p className="text-red-500 text-xs italic">{error}</p>
                 )}
               </div>
               <div className="mb-6">
@@ -88,13 +88,11 @@ function Signin() {
                   id="password"
                   type="password"
                   placeholder="************"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onBlur={validatePassword}
+                  onChange={handleChange}
+                  value={data.password}
+                  required
+                  name="password"
                 />
-                {passwordError && (
-                  <p className="text-red-500 text-xs italic">{passwordError}</p>
-                )}
               </div>
               <div className="flex items-center justify-between">
                 <button
@@ -106,12 +104,9 @@ function Signin() {
               </div>
               <div className="flex items-center pt-7">
                 <p>Don’t have an account?</p>
-                <a
-                  className="pl-5 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                  href="/signup"
-                >
-                  Sign Up
-                </a>
+                <div className="pl-5 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                  Contact Us
+                </div>
               </div>
             </form>
           </div>

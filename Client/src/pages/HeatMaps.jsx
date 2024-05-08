@@ -8,6 +8,10 @@ import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
 
 function HeatMaps() {
+  const user = localStorage.getItem("token");
+  if (user === null) {
+    window.location.href = "/signin";
+  }
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [movements, setMovements] = useState([]);
