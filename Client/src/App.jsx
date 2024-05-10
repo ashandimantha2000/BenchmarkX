@@ -15,6 +15,7 @@ import UserApp from "./pages/UserApp";
 import TestRun from "./pages/TestRun";
 import FeedbackForm from "./TestApp/FeedBacks/FeedbackForm";
 import Surveys from "./pages/Survey";
+import ResetPassword from "./pages/ResetPassword";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route exact path="/signin" element={<SignIn />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/survey" element={<Surveys />} />
+        <Route exact path="/resetpassword" element={<ResetPassword />} />
       </Routes>
       {/* Test App Routes */}
       <Routes>

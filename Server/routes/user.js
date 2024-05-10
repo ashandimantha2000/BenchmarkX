@@ -28,4 +28,28 @@ router.post("/", async (req, res) => {
     }
   });
 
+  //router to update the user
+router.put("/:id", async (req, res) => {
+    try {
+      const { error } = validate(req.body);
+      if (error)
+        return res.status(400).send({ message: error.details[0].message });
+  
+      const user = await User.findById(req.params.id);
+      if (!user) return res.status(404).send({ message: "User Not Found" });
+  
+      const salt = await bcrypt.genSalt(Number(process.env.SALT));
+      const hashPassword = await bcrypt.hash(req.body.password, salt);
+      const hashretypePassword = await bcrypt.hash(req.body.password, salt);
+  
+      user.email = req.body.email;
+      user.password = hashPassword;
+      user.retypePassword = hashretypePassword;
+  
+      await user.save();
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
+  });
+
 export default router;

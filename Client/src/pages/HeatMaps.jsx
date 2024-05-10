@@ -45,7 +45,7 @@ function HeatMaps() {
 
         <main>
           <div className="px-4 sm:px-6 lg:px-8 pt-6 w-full max-w-9xl mx-auto flex-1">
-            <h1 className="sub-heading">Heat Maps <span className="font-normal text-lg">Nortion</span></h1>
+            <h1 className="sub-heading">Heat Maps</h1>
             <hr />
           </div>
 
