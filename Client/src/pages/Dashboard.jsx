@@ -8,8 +8,13 @@ import ABTesting from "../components/dashboard/ABTesting";
 import OnsiteSurveys from "../components/dashboard/OnsiteSurveys";
 import SessionRecordings from "../components/dashboard/SessionRecordings";
 import Scores from "../components/dashboard/Scores";
+import Sessions from "../components/dashboard/Sessions";
 
 function Dashboard() {
+  const user = localStorage.getItem("token");
+  if (user === null) {
+    window.location.href = "/signin";
+  }
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -26,7 +31,7 @@ function Dashboard() {
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
             {/* Welcome banner */}
             <WelcomeBanner />
-            <h1>Nortion</h1>
+      
             <Scores />
             <div className="flex justify-between w-full">
               <HeatMaps />
@@ -34,7 +39,8 @@ function Dashboard() {
             </div>
             <div className="flex justify-between w-full">
               <OnsiteSurveys />
-              <SessionRecordings />
+              {/* <SessionRecordings /> */}
+              <Sessions />
             </div>
           </div>
         </main>

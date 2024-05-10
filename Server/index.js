@@ -7,6 +7,8 @@ import sessionRoute from "./routes/sessionRoute.js";
 import varientARoute from "./routes/varientARoute.js";
 import varientBRoute from "./routes/varientBRoute.js";
 import heatmapRoute from "./routes/heatmapRoute.js";
+import userRoute from "./routes/user.js";
+import authRoute from "./routes/auth.js";
 
 const app = express();
 
@@ -38,6 +40,12 @@ app.use("/varientB", varientBRoute);
 //route for Heatmap
 app.use("/heatmap", heatmapRoute);
 
+//route to users
+app.use("/register", userRoute);
+
+//route to auth
+app.use("/login", authRoute);
+
 //connect to mongoose
 mongoose
   .connect(MONGO_URI)
@@ -46,4 +54,6 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  });
+  }); 
+
+  export default app;

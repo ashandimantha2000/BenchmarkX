@@ -4,15 +4,12 @@ import Sidebar from "../partials/Sidebar";
 import Header from "../partials/Header";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-function Signup() {
-  const user = localStorage.getItem("token");
-  if (user === null) {
-    window.location.href = "/signin";
-  }
-  const registerSuccess = () => toast("You have created the account successfully!");
+function ResetPassword() {
+    const user = localStorage.getItem("token");
+    if (user === null) {
+      window.location.href = "/signin";
+    }
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [data, setData] = useState({
@@ -35,9 +32,7 @@ function Signup() {
     }
     try {
       const url = "http://localhost:5555/register";
-      // navigate('/signin');
-      // alert("Registration successful! Please login to continue.");
-      registerSuccess();
+      navigate('/signin');
       const { data: res } = await axios.post(url, data);
       alert('Registration successful! Please login to continue.');
       // 
@@ -58,7 +53,7 @@ function Signup() {
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
       <Helmet>
-        <title>Create a New Account | BenchmarkX</title>
+        <title>Reset Password | BenchmarkX</title>
       </Helmet>
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -67,11 +62,10 @@ function Signup() {
       <div className="flex">
         <div className="px-32 pt-24 w-fit">
           <h1 className="pb-2 text-3xl font-bold bg-gradient-to-r from-sky-400 to-blue-600 inline-block text-transparent bg-clip-text">
-            Create a New User Account
+            Reset Your Password
           </h1>
           <h2>
-            Enter the details to create a <span className="font-bold">new</span>{" "}
-            user account.
+            Enter your old password and new password.
           </h2>
           <div className="pt-10 w-full max-w-xs">
             <form onSubmit={handleSubmit}>
@@ -80,15 +74,15 @@ function Signup() {
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="Email"
                 >
-                  Email
+                  Old Password
                 </label>
                 <input
                   className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
-                  id="Email"
-                  type="email"
-                  name="email"
+                  id="Password"
+                  type="password"
+                  name="password"
                   placeholder="Email"
-                  value={data.email}
+                  value={data.password}
                   required
                   onChange={handleChange}
                 />
@@ -98,10 +92,10 @@ function Signup() {
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="password"
                 >
-                  Password
+                  New Password
                 </label>
                 <input
-                  className={`shadow appearance-none border rounded w-full px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
+                  className={`shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
                   id="password"
                   type="password"
                   placeholder="************"
@@ -116,10 +110,10 @@ function Signup() {
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="repeat-password"
               >
-                Repeat Password
+                Repeat New Password
               </label>
               <input
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
+                className={`shadow appearance-none border rounded w-full px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                 id="repeat-password"
                 type="password"
                 placeholder="************"
@@ -134,15 +128,15 @@ function Signup() {
                   className="w-full bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
                 >
-                  Register the New User
+                  Reset Password
                 </button>
               </div>
 
               <div className="flex items-center pt-7">
-                <p>Any technical issues?</p>
+                <p>Any technical Issues?</p>
                 <Link
                   className="pl-5 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                  to="/about"
+                to="/about"
                 >
                   Contact Us
                 </Link>
@@ -157,10 +151,9 @@ function Signup() {
             className="h-screen"
           />
         </div>
-        <ToastContainer />
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default ResetPassword;
