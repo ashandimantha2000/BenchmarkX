@@ -11,7 +11,6 @@ function About() {
   }
   return (
     <div className="flex h-screen overflow-hidden bg-light_background">
-      
       <Helmet>
         <title>About | BenchmarkX</title>
       </Helmet>
@@ -37,22 +36,44 @@ function About() {
           </div>
           <div className="px-7">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-              fugit blanditiis unde repellendus esse quibusdam quam, amet at
-              expedita, similique cum, voluptatum doloremque! Alias,
-              consectetur. Nesciunt repellat numquam architecto laborum. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Corporis
-              voluptatibus unde quo officiis eveniet dolorem necessitatibus
-              blanditiis quod labore ea? Vitae nisi sit incidunt quam quisquam!
-              Autem voluptates cum ut. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Nemo earum suscipit quod dolores sed expedita
-              autem possimus, mollitia voluptatum neque aspernatur magnam
-              quisquam officia similique et sapiente fugit maxime iste.
+              Welcome to BenchmarkX, the cutting-edge User Experience Evaluation
+              and Digital Insights Platform designed to propel businesses into
+              the future of digital innovation. In today's fast-paced world of
+              technological advancement and digital transformation,
+              understanding and optimizing user experiences have become
+              paramount for success.
             </p>
             <br />
+            <p>
+              BenchmarkX stands at the forefront of this evolution, offering
+              businesses a comprehensive solution to analyze, track, and enhance
+              user interactions across various digital platforms. From web
+              applications to mobile interfaces, BenchmarkX provides a holistic
+              approach to evaluating user experiences, driving customer
+              satisfaction, and maximizing business outcomes.
+            </p>
+            <br />
+            
+            <p>
+              Built on industry-leading technologies and methodologies,
+              BenchmarkX combines the agility of Agile and Lean UX with the
+              precision of data science to deliver unparalleled results. By
+              integrating with third-party applications and offering advanced
+              data visualization capabilities, BenchmarkX enables businesses to
+              stay ahead of the competition and deliver exceptional digital
+              experiences.
+            </p>
+            <br />
+            <p>
+              Join the ranks of forward-thinking businesses revolutionizing user
+              experience evaluation with BenchmarkX. Explore the possibilities,
+              unlock insights, and embark on a journey towards digital
+              excellence with BenchmarkX by your side. Welcome to the future of
+              user experience evaluation. Welcome to BenchmarkX.
+            </p>
             <a href="https://ashandimantha.vercel.app/" target="_blank">
               <button
-                className=" bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="mt-7 bg-gradient-to-r from-sky-400 to-blue-600 hover:scale-105 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 Visit our website
@@ -61,7 +82,7 @@ function About() {
           </div>
         </main>
         <br />
-        <div className="px-7 pt-6 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+        <div className="px-7 pt-4 pb-10 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
           <h1 className="text-2xl  text-gray-800 font-extrabold ">
             Get in touch
           </h1>
