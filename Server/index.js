@@ -1,7 +1,7 @@
-import { PORT, MONGO_URI } from "./.env";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from 'dotenv';
 import feedbackRoute from "./routes/feedbackRoute.js";
 import sessionRoute from "./routes/sessionRoute.js";
 import varientARoute from "./routes/varientARoute.js";
@@ -10,9 +10,14 @@ import heatmapRoute from "./routes/heatmapRoute.js";
 import userRoute from "./routes/user.js";
 import authRoute from "./routes/auth.js";
 
+dotenv.config();
+
+const PORT = process.env.PORT;
+const MONGO_URI = process.env.MONGO_URI;
+
 const app = express();
 
-//middleware fot parsing request body
+//middleware for parsing request body
 app.use(express.json());
 
 //middleware for handling CORS policy (Option 1)
@@ -56,4 +61,4 @@ mongoose
     console.log(err);
   }); 
 
-  export default app;
+export default app;
