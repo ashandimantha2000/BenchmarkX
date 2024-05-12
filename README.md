@@ -4,7 +4,7 @@
 User Experience Evaluation and Digital Insight Platform
 ## Tech Stack
 
-ReactJS, Vite, TailwindCSS, NodeJs, ExpressJS, MongoDB, JWT, ChartJS, ApexJS, Jest
+ReactJS, Vite, TailwindCSS, NodeJs, ExpressJS, MongoDB, JWT, ChartJS, ApexJS, Jest with Super Test and React Testing Library
 ## Run Locally - Server
 
 Clone the project
