@@ -23,21 +23,21 @@ Add .env file to root of the server directory
 Define port as
 
 ```bash
-const PORT = 5555;
+PORT=5555
 ```
 Add connection string as
 
 ```bash
-const MONGO_URI = 'mongodb+srv://ashan:root@benchmarkx.wwck7lx.mongodb.net/benchmarkx?retryWrites=true&w=majority&appName=BenchmarkX';
+MONGO_URI=mongodb+srv://ashan:root@benchmarkx.wwck7lx.mongodb.net/benchmarkx?retryWrites=true&w=majority&appName=BenchmarkX
 
 ```
 Define JSON Web Token secrect as
 ```bash
-const JWT_SECRET = 'secret';
+JWT_SECRET=secret
 ```
 Define SALT as
 ```bash
-const SALT = 10;
+SALT=10
 ```
 Export Values
 ```bash
